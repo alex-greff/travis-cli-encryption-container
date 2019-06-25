@@ -1,0 +1,23 @@
+{
+  "name": "travis-cli-encryption-container",
+  "version": "1.0.0",
+  "description": "A simple npm script and docker container that allows for Travis CI file encryption to be done quickly.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alex-greff/travis-cli-encryption-container.git"
+  },
+  "keywords": [
+    "Docker",
+    "Travis-CI"
+  ],
+  "author": "Alexander Greff",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alex-greff/travis-cli-encryption-container/issues"
+  },
+  "homepage": "https://github.com/alex-greff/travis-cli-encryption-container#readme"
+}
