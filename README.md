@@ -25,8 +25,8 @@ This tool is a simple shell script that encapsulates a docker container with the
 ``` $ bash start.sh <file/directory> <repository>```
 
 **Arguments:**
-* *\<file/directory>*: the **relative** path of the file or directory that you want encrypted. Using an absolute path will **not** work at the moment.
-* *\<repository>*: the GitHub repository that the encrypted files will be tied to.
+* **\<file/directory>**: the **relative** path of the file or directory that you want encrypted. Using an absolute path will **not** work at the moment.
+* **\<repository>**: the GitHub repository that the encrypted files will be tied to.
    * Ex: `alex-greff/travis-cli-encryption-container`
 
 Upon running the script you will be asked by the Travis CLI to input your Github credentials.
