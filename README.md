@@ -31,10 +31,10 @@ This tool is a simple shell script that encapsulates a docker container with the
 
 Upon running the script you will be asked by the Travis CLI to input your Github credentials.
 
-**Note:** If prompted by Travis to install shell completion reply `n` for no.
+**Note #1:** If prompted by Travis to install shell completion reply with `n` for no.
 
 Once the encryption process is completed using the instructions provided during encryption add the decryption command to your `.travis.yml` file and make sure to **only** copy the encrypted files over to the repository as well.
 
-If you encrypted an entire directory, then reference [here](https://docs.travis-ci.com/user/encrypting-files/#encrypting-multiple-files) for more information on how to handle it after decryption.
+**Note #2:** Due to how `Open SSL` works, directories are compressed with tar before being encrypted. If you encrypted an entire directory, then reference [here](https://docs.travis-ci.com/user/encrypting-files/#encrypting-multiple-files) for more information on how to handle it after decryption.
 
 For more information on the general Travis CI encryption/decryption process [this](https://docs.travis-ci.com/user/encrypting-files/) page is an excellent resource.
