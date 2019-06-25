@@ -25,7 +25,7 @@ This tool is a simple shell script that encapsulates a docker container with the
 ``` $ bash start.sh <file/directory> <repository>```
 
 **Arguments:**
-* **\<file/directory>**: the **relative** path of the file or directory that you want encrypted. Using an absolute path will **not** work at the moment.
+* **\<directory>**: the **relative** path of the directory that contains the files you want encrypted. Using an absolute path will **not** work at the moment. A directory containing more than one file will be compressed before being encrypted.
 * **\<repository>**: the GitHub repository that the encrypted files will be tied to.
    * Ex: `alex-greff/travis-cli-encryption-container`
 
@@ -35,6 +35,6 @@ Upon running the script you will be asked by the Travis CLI to input your Github
 
 Once the encryption process is completed using the instructions provided during encryption add the decryption command to your `.travis.yml` file and make sure to **only** copy the encrypted files over to the repository as well.
 
-**Note #2:** Due to how `Open SSL` works, directories are compressed with tar before being encrypted. If you encrypted an entire directory, then reference [here](https://docs.travis-ci.com/user/encrypting-files/#encrypting-multiple-files) for more information on how to handle it after decryption.
+**Note #2:** Due to how `Open SSL` works, if the directory contains more than one file then it must be compressed with tar before being encrypted. Reference [here](https://docs.travis-ci.com/user/encrypting-files/#encrypting-multiple-files) for more information on how to handle it after decryption.
 
 For more information on the general Travis CI encryption/decryption process [this](https://docs.travis-ci.com/user/encrypting-files/) page is an excellent resource.

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # --- Args ---
-# $1 file/directory path of file(s) to encrypt
+# $1 directory path containing the file(s) to encrypt
 # $2 repository to tie encryption to
 
 IMAGE_NAME="alexgreff/travis_cli_encryption_container"

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # --- Args ---
-# $1 file/directory path of file(s) to encrypt
+# $1 directory path containing the file(s) to encrypt
 # $2 repository to tie encryption to
 
 TARGET_LOCATION="/app/toEncrypt"
@@ -10,36 +10,39 @@ TARGET_REPO=$2
 
 cd "$TARGET_LOCATION"
 
+NUM_FILES=`expr $(ls -afq | wc -l) - 2` # Note: must subtract 2 b/c . and .. are included
+
+echo "Num files $NUM_FILES"
+
 echo "> Logging into Travis"
 
 travis login
 
 if [[ -d $TARGET_LOCATION ]]; then
-    echo "> Target directory detected:"
+    if [ $NUM_FILES -le 1 ]; then
+        echo "> Single file detected: encrypting file"
 
-    echo "> Compressing directory contents"
+        # Get the file name
+        FILE_NAME=`ls | head -1`
 
-    # Construct the tar filename
-    TAR_FILE_NAME=$(basename "$PARENT_TARGET_LOCATION").tgz
+        # Encrypt the file
+        travis encrypt-file $FILE_NAME -r $TARGET_REPO
+    else
+        echo "> More than one file detected: compressing directory contents"
 
-    # Compress the contents of the directory
-    tar -zcvf ./$TAR_FILE_NAME .
+        # Construct the tar filename
+        TAR_FILE_NAME=$(basename "$PARENT_TARGET_LOCATION").tgz
 
-    echo "> Encrypting $TAR_FILE_NAME"
+        # Compress the contents of the directory
+        tar -zcvf ./$TAR_FILE_NAME .
 
-    # Encrypt the compressed file
-    travis encrypt-file $TAR_FILE_NAME -r $TARGET_REPO
+        echo "> Encrypting $TAR_FILE_NAME"
 
-elif [[ -f $TARGET_LOCATION ]]; then
-    echo "> Target file detected:"
-
-    echo "> Encrypting $(basename "$PARENT_TARGET_LOCATION")"
-
-    # Encrypt the file
-    travis encrypt-file $file -r $TARGET_REPO
-
+        # Encrypt the compressed file
+        travis encrypt-file $TAR_FILE_NAME -r $TARGET_REPO
+    fi
 else
-    echo "> ERROR: Invalid encrypt file/directory provided: $PARENT_TARGET_LOCATION" >&2
+    echo "> ERROR: Invalid file provided: '$PARENT_TARGET_LOCATION' is not a directory" >&2
 fi
 
 echo "> Logging out of Travis"
