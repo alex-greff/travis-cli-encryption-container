@@ -25,10 +25,12 @@ if [[ -d $TARGET_LOCATION ]]; then
         # Get the file name
         FILE_NAME=`ls | head -1`
 
+        echo "> Encrypting $FILE_NAME"
+
         # Encrypt the file
         travis encrypt-file $FILE_NAME -r $TARGET_REPO
     else
-        echo "> More than one file detected: compressing directory contents"
+        echo "> More than one file detected: compressing and encrypting directory contents"
 
         # Construct the tar filename
         TAR_FILE_NAME=$(basename "$PARENT_TARGET_LOCATION").tgz
