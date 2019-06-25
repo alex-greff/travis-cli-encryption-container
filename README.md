@@ -1,6 +1,6 @@
 # Travis CLI Encryption Container
 
-A simple npm script and docker container that allows for Travis CI file encryption to be done quickly.
+A simple bash script and docker container that allows for Travis CI file encryption to be done quickly and painlessly.
 
 ## Table of Contents
 * [Why this?](#why-this)
@@ -9,7 +9,7 @@ A simple npm script and docker container that allows for Travis CI file encrypti
 
 ## Why this?
 
-The main purpose of this tool came about due to how annoying it is to encrypt files with for Travis CI on Windows due an encryption bug with the windows version of the Travis CLI. This bug would cause the encrypted files to fail during decryption during the Travis build processes.
+The main purpose of this tool came about due to how annoying it is to encrypt files with for Travis CI on Windows. Due to an encryption bug with the windows version of the Travis CLI the encrypted files would fail to decrypt during the Travis CI build process.
 
 ## What does it do?
 
@@ -35,6 +35,6 @@ Upon running the script you will be asked by the Travis CLI to input your Github
 
 Once the encryption process is completed using the instructions provided during encryption add the decryption command to your `.travis.yml` file and make sure to **only** copy the encrypted files over to the repository as well.
 
-If you encrypted an entire directory then reference [this](https://docs.travis-ci.com/user/encrypting-files/#encrypting-multiple-files) for more information on how to handle it after decryption.
+If you encrypted an entire directory, then reference [here](https://docs.travis-ci.com/user/encrypting-files/#encrypting-multiple-files) for more information on how to handle it after decryption.
 
 For more information on the general Travis CI encryption/decryption process [this](https://docs.travis-ci.com/user/encrypting-files/) page is an excellent resource.
