@@ -13,7 +13,7 @@ The main purpose of this tool came about due to how annoying it is to encrypt fi
 
 ## What does it do?
 
-This tool is a simple shell script that encapsulates a docker container with the Travis CLI (properly) installed which allows for a file to easily be encrypted.
+This tool is a simple shell script that encapsulates a docker container with the Travis CLI (properly) installed which allows for file encryption to easily be done.
 
 ## Dependencies
 
