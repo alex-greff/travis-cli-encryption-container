@@ -9,7 +9,7 @@ A simple bash script and docker container that allows for Travis CI file encrypt
 
 ## Why this?
 
-The main purpose of this tool came about due to how annoying it is to encrypt files with for Travis CI on Windows. Due to an encryption [bug](https://docs.travis-ci.com/user/encrypting-files/#caveat) with the Windows version of the Travis CLI the encrypted files would fail to decrypt during the Travis CI build process.
+The main purpose of this tool came about due to how annoying it is to encrypt files for Travis CI on Windows. Due to an encryption [bug](https://docs.travis-ci.com/user/encrypting-files/#caveat) with the Windows version of the Travis CLI the encrypted files would fail to decrypt during the Travis CI build process.
 
 ## What does it do?
 
